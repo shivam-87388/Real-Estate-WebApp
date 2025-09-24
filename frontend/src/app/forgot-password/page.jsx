@@ -4,7 +4,7 @@ import React from "react";
 const ForgotPassword = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-neutral-950">
-      {/* Main Box with border + shadow */}
+      {/* Box with border  */}
       <div className="w-full max-w-md mt-7 bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-neutral-900 dark:border-neutral-700">
         <div className="p-4 sm:p-7">
           {/* Heading */}

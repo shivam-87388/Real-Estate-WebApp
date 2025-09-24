@@ -7,10 +7,9 @@ const cors = require('cors');
 const port = 5000;
 
 
-
 //middleware
 app.use(cors({
-    origin:['http://localhost:3000'],
+    origin:['http://localhost:3000', 'http://localhost:3001' ],
 }));
 app.use(express.json());
 app.use('/user',UserRouter);
@@ -19,29 +18,29 @@ app.use('/property',PropertyRouter);
 
 
 //end point
-app.get('/', (req, res) => {
-    res.send('response from express');
+app.get('/',(req, res) => {
+res.send('response from express');
 });
 
 //add
-app.get('/add', (req, res) => {
-    res.send('response from add');
+app.get('/add',(req, res) => {
+res.send('response from add');
 });
 
 //getall 
-app.get('/getall', (req, res) => {
-    res.send('response from getall');
+app.get('/getall',(req, res) => {
+res.send('response from getall');
 });
 
 //delete
-app.get('/delete', (req, res) => {
-    res.send('response from delete');
+app.get('/delete',(req, res) => {
+res.send('response from delete');
 });
 
 
 
-// starting the server
-app.listen(port, () => {
+// stsrting the server
+app.listen(port,()=>{
     console.log('server started');
 });
 

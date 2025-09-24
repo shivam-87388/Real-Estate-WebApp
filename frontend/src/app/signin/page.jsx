@@ -1,7 +1,49 @@
 'use client'
+import { useFormik } from "formik";
 import React from "react";
+import * as Yup from "yup";
 
-const Login = () => {
+
+const SigninSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('email address?'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string().required('Password is required')
+    .matches(/[a-z]/, 'lowercase letter is required')
+    .matches(/[A-Z]/, 'uppercase letter is required')
+    .matches(/[0-9]/, 'number is required')
+    .matches(/\W/, 'special character is required')
+    .min(6, '6 characters are required'),
+});
+
+const Signin = () => {
+
+  const signinForm = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+    onSubmit: (values, {resetForm}) => {
+      console.log(values);
+      
+      axios.post('http://localhost:5000/user/add', values)
+      .then((result) => {
+        toast.success('login successful');
+      }).catch((error) => {
+        console.log(error);
+        toast.error('error');
+        
+      })
+
+
+    },
+    validationSchema: SigninSchema
+  });
+
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-neutral-950">
       <div className="w-full max-w-md mt-7 bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-neutral-900 dark:border-neutral-700">
@@ -11,7 +53,7 @@ const Login = () => {
               Sign in
             </h1>
             <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
-              Don’t have an account?{" "}
+              Don't have an account?{" "}
               <a
                 className="text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
                 href="/create-account"
@@ -25,7 +67,7 @@ const Login = () => {
             {/* Google Sign In */}
             <button
               type="button"
-              className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow hover:bg-gray-50 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
+              className="w-full py-3 px-4 inline-flex justify-center cursor-pointer items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow hover:bg-gray-50 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
             >
               {/* Google Icon */}
               <svg className="w-4 h-auto" width={46} height={47} viewBox="0 0 46 47" fill="none">
@@ -77,7 +119,7 @@ const Login = () => {
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+                  className="w-full py-3 px-4 inline-flex cursor-pointer justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700"
                 >
                   Sign in
                 </button>
@@ -90,4 +132,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signin;

@@ -6,36 +6,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 const Home = () => {
   return (
     <>
-      {/* Navbar/Header */}
-      <header className="w-full bg-white shadow-sm">
-        <div className="container mx-auto flex items-center justify-between px-6 py-4">
-          {/* logo */}
-          <a href="/" className="flex items-center gap-2 text-2xl font-bold text-black md:text-3xl">
-            <img src="/realstate-removebg-preview.png" alt="Logo" className="h-16 w-auto" />
-            <span className="text-2xl leading-tight">Property Wala</span>
-          </a>
-
-          {/* nav */}
-          <nav className="hidden lg:flex gap-10">
-            <a href="#" className="text-lg font-semibold text-indigo-500">Home</a>
-            <a href="#" className="text-lg font-semibold text-gray-600 hover:text-indigo-500">Features</a>
-            <a href="#" className="text-lg font-semibold text-gray-600 hover:text-indigo-500">Pricing</a>
-            <a href="#" className="text-lg font-semibold text-gray-600 hover:text-indigo-500">About</a>
-          </nav>
-
-          {/* buttons */}
-          <div className="flex items-center gap-4">
-            <button className="rounded-lg border border-indigo-500 px-5 py-2 text-lg font-semibold text-indigo-600 hover:bg-indigo-50">
-              Create Account
-            </button>
-            <button className="flex items-center gap-2 rounded-lg bg-indigo-100 px-5 py-2 text-lg font-semibold text-indigo-600 hover:bg-indigo-200">
-              <IconUser className="h-6 w-6" />
-              Sign In
-            </button>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section start */}
       <section className="relative w-full h-[90vh] flex items-center justify-center bg-gray-900">
         {/* Background Image */}
@@ -158,7 +128,7 @@ const Home = () => {
             {/* Card 2 */}
             <div className="rounded-xl border bg-white shadow-lg overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+                src="https://www.puravankara.com/_next/image?url=https%3A%2F%2Fbackend.puravankara.com%2Fuploads%2F1_6bb7a0750d.png&w=3840&q=75"
                 alt="Modern Flat"
                 className="h-56 w-full object-cover"
               />
@@ -345,7 +315,7 @@ const Home = () => {
               <p className="text-gray-600 text-center mb-3">
                 "Property Wala helped me find my dream apartment in just a week!"
               </p>
-              <h3 className="text-gray-800 font-semibold">Priya Sharma</h3>
+              <h3 className="text-gray-800 font-semibold">Radhika Sharma</h3>
             </div>
             {/* Testimonial 2 */}
             <div className="flex flex-col items-center bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
@@ -357,7 +327,7 @@ const Home = () => {
               <p className="text-gray-600 text-center mb-3">
                 "Fast, reliable, and easy to use. Highly recommend Property Wala!"
               </p>
-              <h3 className="text-gray-800 font-semibold">Rohit Mehta</h3>
+              <h3 className="text-gray-800 font-semibold">Ram Singh</h3>
             </div>
             {/* Testimonial 3 */}
             <div className="flex flex-col items-center bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
@@ -369,13 +339,13 @@ const Home = () => {
               <p className="text-gray-600 text-center mb-3">
                 "A seamless experience from searching to closing the deal!"
               </p>
-              <h3 className="text-gray-800 font-semibold">Anita Kapoor</h3>
+              <h3 className="text-gray-800 font-semibold">Priya Verma</h3>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6️⃣ How It Works Section */}
+      {/* How It Works Section */}
       <section className="w-full bg-white py-16">
         <div className="container mx-auto px-6">
           <h2 className="mb-12 text-center text-3xl font-bold text-gray-800">
@@ -401,7 +371,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 7️⃣ Call to Action Section */}
+      {/* Call to Action Section */}
       <section className="w-full bg-indigo-600 py-20">
         <div className="container mx-auto px-6 text-center text-white">
           <h2 className="mb-6 text-3xl font-bold md:text-4xl">Ready to find your dream home?</h2>
@@ -415,7 +385,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 8️⃣ Newsletter / Contact Section */}
+      {/*  Newsletter / Contact Section */}
       <section className="w-full bg-gray-50 py-16">
         <div className="container mx-auto px-6 text-center">
           <h2 className="mb-4 text-2xl font-bold text-gray-800">Stay Updated</h2>
@@ -433,128 +403,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 9️⃣ Footer */}
-      <footer className="w-full bg-gray-800 py-10 text-white">
-        <div className="container mx-auto px-6 grid gap-10 sm:grid-cols-3">
-          {/* Brand + Logo */}
-          <div className="flex justify-between items-center">
-            <div>
-              <div className='flex items-center gap-3 mb-4'>
-                <img
-                  src="/realstate-removebg-preview.png" // replace with your logo path
-                  alt="Property Wala Logo"
-                  className="h-12 w-auto"
-                />
-                <h3 className="font-bold text-lg">Property Wala</h3>
-              </div>
-
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Your trusted real estate platform for buying, selling, and renting
-                properties across India.
-              </p>
-            </div>
-          </div>
-
-          {/* Links */}
-          <div>
-            <h3 className="font-bold text-lg mb-4">Links</h3>
-            <ul className="text-gray-400 space-y-2 text-sm">
-              <li>
-                <a href="#" className="hover:text-white transition-colors duration-200">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors duration-200">
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors duration-200">
-                  Terms
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors duration-200">
-                  Privacy
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Social Media */}
-          <div>
-            <h3 className="font-bold text-lg mb-4">Follow Us</h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-gray-400 hover:text-green-500 transition-transform transform hover:scale-105"
-                  aria-label="WhatsApp"
-                >
-                  <i className="fa-brands fa-whatsapp text-2xl"></i>
-                  <span className="ml-2">WhatsApp</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-gray-400 hover:text-pink-500 transition-transform transform hover:scale-105"
-                  aria-label="Instagram"
-                >
-                  <i className="fa-brands fa-instagram text-2xl"></i>
-                  <span className="ml-2">Instagram</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-gray-400 hover:text-blue-600 transition-transform transform hover:scale-105"
-                  aria-label="Facebook"
-                >
-                  <i className="fa-brands fa-facebook text-2xl"></i>
-                  <span className="ml-2">Facebook</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-gray-400 hover:text-blue-500 transition-transform transform hover:scale-105"
-                  aria-label="LinkedIn"
-                >
-                  <i className="fa-brands fa-linkedin text-2xl"></i>
-                  <span className="ml-2">LinkedIn</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-gray-400 hover:text-sky-500 transition-transform transform hover:scale-105"
-                  aria-label="Twitter"
-                >
-                  <i className="fa-brands fa-twitter text-2xl"></i>
-                  <span className="ml-2">Twitter</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom Copyright */}
-        <p className="mt-8 text-center text-gray-500 text-sm">
-          © 2025 Property Wala. All rights reserved.
-        </p>
-      </footer>
+      
 
     </>
   )
