@@ -29,24 +29,30 @@ const CreateAccount = () => {
         .oneOf([true], "You must accept the terms and conditions")
         .required("You must accept the terms and conditions"),
     }),
-    onSubmit: (values) => {
-      console.log(values);
-      // Handle form submission here
-      axios.post('http://localhost:5000/user/add', values)
-        .then((result) => {
-          console.log('Account created successfully');
-          toast.success('Account created successfully');
-        }).catch((error) => {
-          console.log(error);
-          toast.error('Error creating account');
-          console.log('Error creating account');
-        })
-    },
+  onSubmit: (values) => {
+  // Send form data to backend
+  axios.post('http://localhost:5000/user/register', values)
+    .then((response) => {
+      // Backend responds successfully
+      if (response.status === 201) { // account created
+        toast.success("Account created successfully!");
+      } else {
+        // Any unexpected status
+        toast.error("Error creating account");
+      }
+    })
+    .catch((error) => {
+      // If backend returns an error
+      const message = error.response?.data?.message || "Error creating account";
+      toast.error(message);
+    });
+}
+
   });
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-neutral-950">
-      <div className="w-full max-w-md mt-7 bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-neutral-900 dark:border-neutral-700">
+      <div className="w-full max-w-md mt-7 mb-7 bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-neutral-900 dark:border-neutral-700">
         <div className="p-4 sm:p-7">
           <div className="text-center">
             <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">

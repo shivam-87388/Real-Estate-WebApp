@@ -63,7 +63,7 @@ const Footer = () => {
         </li>
         <li className="flex items-center gap-2">
           <i className="fa-solid fa-location-dot text-red-500"></i>
-          <span>New Delhi, India</span>
+          <span>123, Real Estate Street, Lucknow, India</span>
         </li>
       </ul>
     </div>

@@ -26,7 +26,7 @@ const Navbar = () => {
 
           {/* signup-button */}
           <div className="flex items-center gap-4">
-            <a href='\signup'
+            <a href='\createaccount'
              className="rounded-lg border border-indigo-500 px-5 py-2 text-lg font-semibold text-indigo-600 hover:bg-indigo-50">
               Create Account
             </a>

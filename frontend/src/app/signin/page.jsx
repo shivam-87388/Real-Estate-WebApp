@@ -2,45 +2,42 @@
 import { useFormik } from "formik";
 import React from "react";
 import * as Yup from "yup";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
-
+// Validation Schema
 const SigninSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('email address?'),
-  email: Yup.string().email('Invalid email').required('Required'),
+  email: Yup.string().email('Invalid email').required('Email is required'),
   password: Yup.string().required('Password is required')
-    .matches(/[a-z]/, 'lowercase letter is required')
-    .matches(/[A-Z]/, 'uppercase letter is required')
-    .matches(/[0-9]/, 'number is required')
-    .matches(/\W/, 'special character is required')
-    .min(6, '6 characters are required'),
+    .matches(/[a-z]/, 'Lowercase letter is required')
+    .matches(/[A-Z]/, 'Uppercase letter is required')
+    .matches(/[0-9]/, 'Number is required')
+    .matches(/\W/, 'Special character is required')
+    .min(6, 'Minimum 6 characters are required'),
 });
 
+// Formik Setup
 const Signin = () => {
-
   const signinForm = useFormik({
     initialValues: {
-      name: '',
       email: '',
       password: '',
     },
-    onSubmit: (values, {resetForm}) => {
-      console.log(values);
-      
-      axios.post('http://localhost:5000/user/add', values)
-      .then((result) => {
-        toast.success('login successful');
-      }).catch((error) => {
-        console.log(error);
-        toast.error('error');
-        
-      })
-
-
-    },
-    validationSchema: SigninSchema
+    
+    // Send data to backend API
+    validationSchema: SigninSchema,
+    onSubmit: (values, { resetForm }) => {
+      axios.post('http://localhost:5000/user/authenticate', values)
+        .then((result) => {
+          toast.success('Login successful');
+          localStorage.setItem("token", result.data.token); // save token
+          resetForm();
+        })
+        .catch((error) => {
+          console.error(error);
+          toast.error('Invalid email or password');
+        });
+    }
   });
 
 
@@ -81,28 +78,41 @@ const Signin = () => {
             </div>
 
             {/* Form */}
-            <form>
+            <form onSubmit={signinForm.handleSubmit}>
               <div className="grid gap-y-4">
                 {/* Email */}
                 <div>
                   <label className="block text-sm mb-2 dark:text-white">Email address</label>
                   <input
-                    type="email"
-                    placeholder="Enter your email"
-                    required
-                    className="py-2.5 sm:py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm sm:text-base placeholder:text-sm sm:placeholder:text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
-                  />
+                   type="email"
+                   name="email"
+                   placeholder="Enter your email"
+                   value={signinForm.values.email}
+                   onChange={signinForm.handleChange}
+                   onBlur={signinForm.handleBlur}
+                   className="py-2.5 sm:py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm sm:text-base placeholder:text-sm sm:placeholder:text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
+                 />
+
+                
                 </div>
 
                 {/* Password */}
                 <div>
                   <label className="block text-sm mb-2 dark:text-white">Password</label>
+                
                   <input
-                    type="password"
-                    placeholder="Enter your password"
-                    required
-                    className="py-2.5 sm:py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm sm:text-base placeholder:text-sm sm:placeholder:text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
+                   type="password"
+                   name="password"
+                   placeholder="Enter your password"
+                   value={signinForm.values.password}
+                   onChange={signinForm.handleChange}
+                   onBlur={signinForm.handleBlur}
+                   className="py-2.5 sm:py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm sm:text-base placeholder:text-sm sm:placeholder:text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
                   />
+                  {signinForm.touched.password && signinForm.errors.password && (
+                    <p className="text-red-500 text-sm">{signinForm.errors.password}</p>
+                  )}
+
                 </div>
 
                 {/* Remember + Forgot */}
